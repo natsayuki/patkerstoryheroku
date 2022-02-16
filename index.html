@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="vue/font-awesome.min.css">
+    <link rel="stylesheet" href="vue/all.css">
+    <link rel="stylesheet" href="vue/font.css">
+    <link rel="stylesheet" href="vue/vue-material.min.css">
+    <link rel="stylesheet" href="vue/default.css">
+    <meta name="viewport" content="width=.8, initial-scale=.8, maximum-scale=.8, user-scalable=0">
+    <title>Patker Story</title>
+  </head>
+  <body>
+    <div id="app">
+      <div v-if="screen == 'mainMenu'" class="fullscreen column even">
+        <md-button class="md-accent big" @click="newClick()">NEW</md-button>
+        <md-button class="md-primary big">LOAD</md-button>
+      </div>
+      <div v-if="screen == 'game' && chapterJSON != null" class="fullscreen column" @click="handleClick()">
+        <img class="background" :src="chapter + '/' + bBG" />
+        <img class="character" :src="chapter + '/' + bIMG" />
+        <span :asdfsadf="bSCPT"></span>
+        <span :asdfsadf="bCHC"></span>
+        <span :asdfsadf="bIN"></span>
+        <md-card v-if="currChoice || currInput">
+          <md-card-content>
+            <span class="column button">
+              <md-button v-for="button in currChoice"
+              v-if="button['cond'] == undefined || eval(button['cond'])"
+              @click="eval(button['script']||button['sc']) && choiceDone()">
+              {{button['text']||button['t']}}
+              </md-button>
+            </span>
+            <span class="column" v-if="currInput">
+              <md-field @submit.prevent="" :md-counter="false">
+                <md-input v-model="tempInput" maxlength="12"></md-input>
+              </md-field>
+              <md-button @click="inputDone()">DONE</md-button>
+            </span>
+          </md-card-content>
+        </md-card>
+        <md-card class="dialogue">
+          <md-card-header><div class="md-title">{{bCHR}}</div></md-card-header>
+          <md-card-content><span class="dialogueText">{{bTEXT}}</span></md-card-content>
+        </md-card>
+      </div>
+      <div :class="(fading=='in'?'':'fadeOut') +' fullscreen fade'" id="fade" v-if="fading"></div>
+    </div>
+    <script src="vue/jquery.min.js"></script>
+    <script src="vue/vue.js"></script>
+    <script src="vue/vuemd.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

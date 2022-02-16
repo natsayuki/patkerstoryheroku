@@ -1,0 +1,89 @@
+.row, .column, .fullscreen{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.row{
+  flex-direction: row !important;
+}
+.fullscreen{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: white;
+}
+.big{
+  transform: scale(2);
+  margin: 3rem;
+}
+.even{
+  justify-content: space-evenly !important;
+}
+.dialogue{
+  width: 80vw;
+  position: fixed !important;
+  left: 10vw;
+  height: 15rem;
+  bottom: 1rem;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+.dialogueText{
+  font-size: 1.4rem;
+}
+.background{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  height: 100% !important;
+  width: 100% !important;
+  filter: blur(5px);
+}
+.character{
+  position: fixed;
+  bottom: 0px;
+  width: 50%;
+  left: 25%;
+}
+*{
+  user-select: none;
+  -moz-user-select: none;
+}
+.fade{
+  background-color: black !important;
+  opacity: 1;
+  transition: all .4s;
+}
+.fadeOut{
+  opacity: 0 !important;
+  transition: all .4s;
+}
+@media (max-width: 800px){
+  .character{
+    position: fixed;
+    bottom: 20vh;
+    width: 95%;
+    left: 2.5%;
+  }
+  .dialogue{
+    width: 100vw;
+    position: fixed !important;
+    left: 0px;
+    height: 30%;
+    bottom: 0px;
+    padding: 0px;
+  }
+  .dialogueText{
+    font-size: 1rem;
+  }
+  .md-card-header{
+    padding: .2rem !important;
+  }
+  .md-title{
+    font-size: 1.3rem !important;
+  }
+}

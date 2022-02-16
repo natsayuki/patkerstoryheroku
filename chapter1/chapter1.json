@@ -1,0 +1,195 @@
+{
+  "name": "Chapter 1",
+  "characters": {
+    "Patker": {
+      "neutral": "patker/neutral.png",
+      "shy": "patker/shy.png",
+      "happy": "patker/happy.png"
+    },
+    "Oreg": {
+      "neutral": "oreg/neutral.png",
+      "shy": "oreg/shy.png",
+      "happy": "oreg/happy.png",
+      "angry": "oreg/angry.png"
+    },
+    "Nodwarf": {
+      "neutral": "nodwarf/neutral.png",
+      "shy": "nodwarf/shy.png",
+      "happy": "nodwarf/happy.png",
+      "angry": "nodwarf/angry.png"
+    }
+  },
+  "backgrounds": {
+    "forest": "backgrounds/forest.png",
+    "cave": "backgrounds/cave.png"
+  },
+  "dialogue": {
+    "init": [
+      {
+        "character": "Patker",
+        "stance": "neutral",
+        "text": "Welcome to patker story",
+        "background": "forest"
+      },
+      {"t": "This is some test dialogue"},
+      {
+        "s": "happy",
+        "t": "This is a test of a different stance"
+      },
+      {
+        "s": "neutral",
+        "t": "This is a test of remembering character and stance"
+      },
+      {
+        "s": "shy",
+        "t": "Testing shy stance cause why not"
+      },
+      {
+        "c": "Oreg",
+        "s": "neutral",
+        "t": "Uh oh it me Mr. Chichinus.  Chichinus here.",
+        "bg": "cave",
+        "sc": "methods.fade()"
+      },
+      {
+        "s": "shy",
+        "t": "Clubs are for ogres"
+      },
+      {
+        "s": "happy",
+        "t": "Character building"
+      },
+      {
+        "t": "Testing script",
+        "script": "data.temp = 5"
+      },
+      {
+        "t": "hello ${data.temper}",
+        "sc": "data.temper = 'asdf'"
+      },
+      {
+        "t": "This is testing some more ${data.placeholder}",
+        "sc": "data.placeholder = 'EpiC ScRIpting StyLE'"
+      },
+      {
+        "t": "What choice will you make",
+        "choice": [
+          {
+            "t": "choice 1",
+            "sc": "methods.toBranch('branch1')"
+          },
+          {
+            "t": "choice 2",
+            "sc": "methods.toBranch('branch2')"
+          }
+        ]
+      }
+    ],
+    "branch1": [
+      {
+        "c": "Oreg",
+        "s": "happy",
+        "bg": "forest",
+        "sc": "methods.fade()"
+      },
+      {"t": "ok this is epic"},
+      {"t": "option 1 was the correct option"},
+      {"t": "option 2 will mess you up"},
+      {
+        "t": "Now it is time for school",
+        "sc": "methods.toBranch('firstSchool'); data.firstOption = 1;"
+      }
+    ],
+    "branch2": [
+      {
+        "c": "Patker",
+        "s": "shy",
+        "bg": "forest",
+        "sc": "methods.fade()"
+      },
+      {"t": "How could you pick option 2??????"},
+      {
+        "c": "Oreg",
+        "s": "angry",
+        "t": "I'm finna mess you up fam"
+      },
+      {"t": "You messing in the wrong business bucko"},
+      {
+        "c": "Nodwarf",
+        "s": "neutral",
+        "t": "it me, Nodwarf"
+      },
+      {
+        "t": "Come with me and I can save you",
+        "sc": "methods.toBranch('firstSchool'); data.firstOption = 2;"
+      }
+    ],
+    "firstSchool": [
+      {
+        "c": "Patker",
+        "s": "neutral",
+        "bg": "school",
+        "t": "wow I am at school",
+        "sc": "methods.fade()"
+      },
+      {"t": "the following dialogue is based on a previous choice"},
+      {
+        "t": "${data.tempDialogue}",
+        "sc": "data.tempDialogue = data.firstOption == 1 ? 'Whew I am glad I picked option 1 earlier' : 'Boy do I regret picking option 2 earlier'"
+      },
+      {"t": "hopefully nothing broke in that process"},
+      {
+        "c": "Nodwarf",
+        "t": "No it all worked correctly"
+      },
+      {
+        "c": "Patker",
+        "t": "Wow thanks Nodwarf.  I am glad that worked correctly"
+      },
+      {
+        "c": "Nodwarf",
+        "t": "It is time for you to make an inconsequential decision that will only have temporary meaning",
+        "ch": [
+          {
+            "t": "Peanut Cake",
+            "sc": "data.cake = 'peanut'"
+          },
+          {
+            "t": "Chocolate Cake",
+            "sc": "data.cake = 'chocolate'"
+          }
+        ]
+      },
+      {
+        "c": "Patker",
+        "t": "mmmmmm.  I love ${data.cake} cake"
+      },
+      {
+        "c": "Nodwarf",
+        "t": "temporary test passed.  It really work!"
+      },
+      {
+        "t": "What is even your name now",
+        "input": "playerName"
+      },
+      {"t": "ok ${data.playerName} is an very epic name"},
+      {
+        "t": "You will see different choices based on a passed decision",
+        "ch": [
+          {
+            "t": "I love option 1",
+            "cond": "data.firstOption == 1"
+          },
+          {
+            "t": "I regret option 2",
+            "cond": "data.firstOption == 2"
+          },
+          {
+            "t": "you will never see this optiuon",
+            "cond": "false"
+          }
+        ]
+      }
+    ]
+  }
+}
